@@ -342,6 +342,8 @@ const _urlLang = _p.get('lang');
 const _urlColor = _p.get('color');
 let lang = (ORDI_CONFIG.languages||['de']).includes(_urlLang) ? _urlLang : (ORDI_CONFIG.defaultLang||'de');
 if (_urlColor) ORDI_CONFIG.colorPrimary = decodeURIComponent(_urlColor);
+const _urlFont = _p.get('font');
+if (_urlFont) ORDI_CONFIG.font = _urlFont;
 
 function t(obj) {
   if (!obj) return '';
