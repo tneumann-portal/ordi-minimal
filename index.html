@@ -5,510 +5,210 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-
 <script src="config.js"></script>
-
 <style>
   :root {
-    --rose:       #b85c6e;
-    --rose-deep:  #8a3f51;
-    --rose-light: #f7eef0;
-    --rose-mist:  #fdf5f6;
-    --stone:      #1a1614;
-    --stone-mid:  #5a4e4a;
-    --stone-light:#9a8e8a;
-    --cream:      #faf8f6;
-    --border:     #ede8e4;
-    --white:      #ffffff;
+    --rose:        #b85c6e;
+    --rose-deep:   #8a3f51;
+    --rose-light:  #f7eef0;
+    --rose-mist:   #fdf5f6;
+    --ink:         #1c1917;
+    --ink-mid:     #57534e;
+    --ink-light:   #a8a29e;
+    --paper:       #fafaf9;
+    --paper-dark:  #f5f5f4;
+    --border:      #e7e5e4;
+    --white:       #ffffff;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    color: var(--stone);
-    background: var(--white);
-    line-height: 1.7;
-    font-size: 16px;
-  }
+  body { font-family: 'Source Sans 3', sans-serif; font-weight: 300; color: var(--ink); background: var(--white); line-height: 1.75; }
   a { color: inherit; text-decoration: none; }
-
-  /* ── TYPE ── */
-  .serif { font-family: 'DM Serif Display', serif; font-weight: 400; }
-  .label {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rose);
-  }
+  .label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); }
 
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
+    height: 56px; display: flex; align-items: center; justify-content: space-between;
     padding: 0 6vw;
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1rem;
-    color: var(--stone);
-    letter-spacing: 0.01em;
-  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: var(--ink); letter-spacing: 0.01em; }
   .nav-logo em { font-style: italic; color: var(--rose); }
-  .nav-center {
-    display: flex; gap: 2.5rem; align-items: center;
-  }
-  .nav-center a {
-    font-size: 0.78rem;
-    color: var(--stone-mid);
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
-  }
-  .nav-center a:hover { color: var(--stone); }
-  .nav-right { display: flex; align-items: center; gap: 1.2rem; }
-  .lang-toggle {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--stone-light);
-    cursor: pointer;
-    transition: color 0.2s;
-    background: none; border: none; padding: 0;
-  }
-  .lang-toggle.active { color: var(--rose); font-weight: 500; }
-  .nav-cta {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-    background: var(--stone);
-    padding: 0.55rem 1.2rem;
-    border-radius: 1px;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--rose); }
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav-links a { font-size: 0.78rem; font-weight: 400; color: var(--ink-mid); transition: color 0.2s; letter-spacing: 0.02em; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-row { display: flex; }
+  .lang-btn { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: none; border: none; color: var(--ink-light); padding: 4px 6px; cursor: pointer; transition: color 0.15s; border-bottom: 1.5px solid transparent; }
+  .lang-btn.active { color: var(--rose); border-bottom-color: var(--rose); }
+  .nav-cta { font-size: 0.72rem; font-weight: 500; color: var(--rose); border: 1px solid var(--rose); padding: 0.45rem 1.1rem; transition: all 0.2s; letter-spacing: 0.04em; }
+  .nav-cta:hover { background: var(--rose); color: var(--white); }
+  .mobile-controls { display: none; align-items: center; gap: 10px; }
+  .mobile-menu-btn { display: flex; background: none; border: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 4px; }
+  .mobile-menu-btn span { display: block; width: 20px; height: 1px; background: var(--ink); }
 
   /* ── HERO ── */
   .hero {
-    padding-top: 60px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding-top: 56px;
+    min-height: 85vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center;
-    padding-left: 6vw;
-    padding-right: 6vw;
-    padding-bottom: 6rem;
+    padding-left: 6vw; padding-right: 6vw;
+    padding-bottom: 0;
     background: var(--white);
-    position: relative;
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 10%; right: 10%;
-    height: 1px;
-    background: var(--border);
-  }
-  .hero-eyebrow {
-    margin-bottom: 2rem;
-  }
+  .hero-inner { max-width: 700px; padding: 5rem 0 4rem; }
+  .hero-eyebrow { margin-bottom: 1.5rem; }
   .hero-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
     font-weight: 400;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    color: var(--stone);
-    max-width: 14ch;
-    margin: 0 auto 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
   }
-  .hero-title em {
-    font-style: italic;
-    color: var(--rose);
-  }
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--stone-mid);
-    max-width: 44ch;
-    margin: 0 auto 3rem;
-    line-height: 1.85;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 5rem;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--rose);
-    color: var(--white);
-    padding: 0.9rem 2rem;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border-radius: 1px;
-    transition: background 0.2s;
-    border: none; cursor: pointer;
-  }
+  .hero-title em { font-style: italic; color: var(--rose); }
+  .hero-sub { font-size: 1rem; color: var(--ink-mid); line-height: 1.85; max-width: 46ch; margin: 0 auto 2.5rem; }
+  .hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rose); color: var(--white); padding: 0.8rem 1.8rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; border: none; cursor: pointer; transition: background 0.2s; }
   .btn-primary:hover { background: var(--rose-deep); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: transparent;
-    color: var(--stone-mid);
-    padding: 0.9rem 2rem;
-    font-size: 0.78rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border: 1px solid var(--border);
-    border-radius: 1px;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .btn-ghost:hover { border-color: var(--stone); color: var(--stone); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--ink-mid); padding: 0.8rem 1.8rem; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
+  .btn-outline:hover { border-color: var(--ink-mid); color: var(--ink); }
+  .hero-stats { display: flex; gap: 3rem; justify-content: center; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; color: var(--ink); line-height: 1; }
+  .stat-lbl { font-size: 0.68rem; color: var(--ink-light); margin-top: 0.25rem; letter-spacing: 0.06em; }
 
-  .hero-stats {
+  /* ── ZEITEN STREIFEN ── */
+  .times-strip {
     display: flex;
-    gap: 4rem;
-    justify-content: center;
+    background: var(--ink);
+    overflow-x: auto;
   }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
-    font-weight: 400;
-    color: var(--stone);
-    line-height: 1;
-    margin-bottom: 0.3rem;
+  .times-strip-item {
+    flex: 1;
+    min-width: 200px;
+    padding: 1.8rem 2.5rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; gap: 0.3rem;
   }
-  .stat-lbl {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    color: var(--stone-light);
-    text-transform: uppercase;
+  .times-strip-item:last-child { border-right: none; }
+  .times-strip-role { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.4rem; }
+  .times-strip-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: var(--white); }
+  .times-strip-days { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
+  .times-strip-hours { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+  .times-strip-ins { font-size: 0.65rem; letter-spacing: 0.06em; color: var(--rose); margin-top: 0.4rem; }
+  .times-strip-contact {
+    flex: 1; min-width: 200px;
+    padding: 1.8rem 2.5rem;
+    display: flex; flex-direction: column; justify-content: center; gap: 0.3rem;
+    background: var(--rose);
   }
-
-  /* ── ZEITEN ── */
-  .times-section {
-    padding: 5rem 6vw;
-    background: var(--cream);
-  }
-  .times-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .times-doc {
-    background: var(--white);
-    padding: 2.5rem 3rem;
-  }
-  .times-doc-label { margin-bottom: 1.5rem; }
-  .times-doc-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    color: var(--stone);
-    margin-bottom: 0.75rem;
-  }
-  .times-doc-days {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--stone-mid);
-    margin-bottom: 0.2rem;
-  }
-  .times-doc-hours {
-    font-size: 0.85rem;
-    color: var(--stone-light);
-    margin-bottom: 0.75rem;
-  }
-  .times-doc-ins {
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    color: var(--rose);
-    border: 0.5px solid var(--rose-light);
-    border-radius: 1px;
-    padding: 0.2rem 0.6rem;
-    display: inline-block;
-    background: var(--rose-mist);
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    padding: 7rem 6vw;
-  }
-  .section-inner { max-width: 900px; margin: 0 auto; }
-  .section-header {
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--stone);
-    margin-top: 0.75rem;
-  }
+  .times-strip-contact-line { font-size: 0.8rem; color: rgba(255,255,255,0.85); }
+  .times-strip-contact-line a { color: var(--white); }
 
   /* ── LEISTUNGEN ── */
-  .services-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border-top: 1px solid var(--border);
-  }
-  .service-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 1.8rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-    cursor: default;
-  }
-  .service-item:hover { background: var(--cream); margin: 0 -2rem; padding: 1.8rem 2rem; }
-  .service-icon {
-    font-size: 1.2rem;
-    color: var(--rose);
-    flex-shrink: 0;
-    margin-top: 2px;
-    width: 24px;
-  }
-  .service-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem;
-    color: var(--stone);
-    margin-bottom: 0.2rem;
-  }
-  .service-desc {
-    font-size: 0.82rem;
-    color: var(--stone-light);
-    line-height: 1.65;
-  }
+  .section { padding: 6rem 6vw; }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 3rem; gap: 2rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.2; color: var(--ink); }
+
+  .services-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
+  .service-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid var(--border); }
+  .service-row:last-child { border-bottom: none; }
+  .service-icon { font-size: 1rem; color: var(--rose); flex-shrink: 0; margin-top: 3px; width: 20px; }
+  .service-name { font-size: 0.92rem; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem; }
+  .service-desc { font-size: 0.78rem; color: var(--ink-light); line-height: 1.6; }
 
   /* ── TEAM ── */
-  .team-section { padding: 7rem 6vw; background: var(--stone); }
-  .team-inner { max-width: 900px; margin: 0 auto; }
-  .team-header { text-align: center; margin-bottom: 5rem; }
-  .team-header .label { color: rgba(255,255,255,0.4); }
-  .team-header .section-title { color: var(--white); }
-  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .team-card { }
-  .team-photo {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .team-initials {
-    font-family: 'DM Serif Display', serif;
-    font-size: 5rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.15);
-  }
-  .team-bar {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px; background: var(--rose);
-  }
-  .team-role { margin-bottom: 0.4rem; }
-  .team-role .label { color: rgba(255,255,255,0.4); }
-  .team-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    color: var(--white);
-    margin-bottom: 1rem;
-  }
-  .team-bio {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.85;
-    margin-bottom: 1.2rem;
-  }
-  .team-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .team-tag {
-    font-size: 0.68rem;
-    border: 0.5px solid rgba(255,255,255,0.15);
-    border-radius: 1px;
-    padding: 0.2rem 0.6rem;
-    color: rgba(255,255,255,0.4);
-  }
+  .team-section { background: var(--paper-dark); padding: 6rem 6vw; }
+  .team-inner { max-width: 1000px; margin: 0 auto; }
+  .team-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
+  .team-card { background: var(--white); padding: 2.5rem; }
+  .team-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--paper-dark); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
+  .team-initials { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-style: italic; color: var(--rose); opacity: 0.5; }
+  .team-color-dot { position: absolute; bottom: 4px; right: 4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--white); }
+  .team-role { margin-bottom: 0.3rem; }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; color: var(--ink); margin-bottom: 0.75rem; }
+  .team-bio { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+  .team-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .team-tag { font-size: 0.68rem; border: 0.5px solid var(--border); padding: 0.2rem 0.6rem; color: var(--ink-light); }
 
   /* ── PORTAL ── */
-  .portal-section {
-    padding: 7rem 6vw;
-    background: var(--rose-mist);
-    text-align: center;
-  }
-  .portal-inner { max-width: 600px; margin: 0 auto; }
-  .portal-inner .label { margin-bottom: 1rem; display: block; }
-  .portal-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--stone);
-    margin-bottom: 1.5rem;
-  }
+  .portal-section { padding: 6rem 6vw; background: var(--white); }
+  .portal-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .portal-divider { width: 40px; height: 2px; background: var(--rose); margin: 1rem 0 1.5rem; }
+  .portal-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 1.2rem; }
   .portal-title em { font-style: italic; color: var(--rose); }
-  .portal-sub {
-    font-size: 0.95rem;
-    color: var(--stone-mid);
-    line-height: 1.85;
-    margin-bottom: 2.5rem;
-    max-width: 40ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .portal-features {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 2.5rem;
-  }
-  .portal-feature {
-    font-size: 0.85rem;
-    color: var(--stone-mid);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .portal-feature::before {
-    content: '';
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--rose);
-    flex-shrink: 0;
-  }
-
-  /* ── KONTAKT ── */
-  .contact-section { padding: 7rem 6vw; }
-  .contact-inner { max-width: 900px; margin: 0 auto; }
-  .contact-header { text-align: center; margin-bottom: 5rem; }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .contact-block { margin-bottom: 2rem; }
-  .contact-block .label { display: block; margin-bottom: 0.6rem; }
-  .contact-block p { font-size: 0.9rem; color: var(--stone-mid); line-height: 1.9; }
-  .contact-block a { color: var(--rose); }
-  .contact-map {
-    aspect-ratio: 4/3;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .contact-map iframe { width: 100%; height: 100%; border: 0; }
+  .portal-sub { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 2rem; }
+  .portal-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+  .portal-feature { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--ink-mid); }
+  .portal-feature i { color: var(--rose); font-size: 0.9rem; flex-shrink: 0; }
+  .portal-aside { background: var(--paper); border: 1px solid var(--border); padding: 3rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+  .portal-aside-icon { font-size: 2.5rem; color: var(--rose); opacity: 0.6; }
+  .portal-aside-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: var(--ink-mid); line-height: 1.6; }
 
   /* ── REVIEWS ── */
-  .reviews-section { padding: 5rem 6vw; background: var(--cream); }
-  .reviews-inner { max-width: 900px; margin: 0 auto; }
-  .reviews-header { text-align: center; margin-bottom: 4rem; }
-  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
-  .review-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    padding: 1.8rem;
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-  .review-stars { color: #f59e0b; font-size: 0.9rem; letter-spacing: 3px; }
-  .review-text {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--stone);
-    line-height: 1.7;
-    flex: 1;
-  }
-  .review-footer { display: flex; justify-content: space-between; align-items: center; }
-  .review-name { font-size: 0.78rem; font-weight: 500; color: var(--stone); }
-  .review-date { font-size: 0.68rem; color: var(--stone-light); }
+  .reviews-section { padding: 5rem 6vw; background: var(--paper-dark); display: none; }
+  .reviews-inner { max-width: 1000px; margin: 0 auto; }
+  .reviews-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
+  .review-card { background: var(--white); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .review-stars { color: #f59e0b; font-size: 0.85rem; letter-spacing: 3px; }
+  .review-text { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-style: italic; color: var(--ink); line-height: 1.75; flex: 1; }
+  .review-footer { display: flex; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+  .review-name { font-size: 0.78rem; font-weight: 500; color: var(--ink); }
+  .review-date { font-size: 0.7rem; color: var(--ink-light); }
+
+  /* ── KONTAKT ── */
+  .contact-section { padding: 6rem 6vw; background: var(--white); }
+  .contact-inner { max-width: 1000px; margin: 0 auto; }
+  .contact-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+  .contact-block .label { display: block; margin-bottom: 0.75rem; }
+  .contact-block p { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.9; }
+  .contact-block a { color: var(--rose); }
+  .contact-map-full { margin-top: 3rem; height: 320px; border: 1px solid var(--border); overflow: hidden; }
+  .contact-map-full iframe { width: 100%; height: 100%; border: 0; }
 
   /* ── FOOTER ── */
-  footer {
-    padding: 2.5rem 6vw;
-    background: var(--stone);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .footer-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.5);
-  }
+  footer { padding: 2rem 6vw; background: var(--paper-dark); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.88rem; font-style: italic; color: var(--ink-mid); }
   .footer-links { display: flex; gap: 2rem; }
-  .footer-links a {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.06em;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: rgba(255,255,255,0.7); }
-  .footer-lang { display: flex; gap: 0; }
-  .footer-lang a {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    padding: 2px 8px;
-    border: 0.5px solid rgba(255,255,255,0.1);
-    transition: all 0.15s;
-  }
-  .footer-lang a.active { color: var(--rose); border-color: var(--rose); }
+  .footer-links a { font-size: 0.75rem; color: var(--ink-light); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--rose); }
+  .footer-lang { display: flex; }
+  .footer-lang a { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 3px 7px; border-bottom: 1.5px solid transparent; transition: all 0.15s; }
+  .footer-lang a.active { color: var(--rose); border-bottom-color: var(--rose); }
 
   /* ── MODALS ── */
-  .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(26,22,20,0.7); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 2rem; }
+  .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(28,25,23,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 2rem; }
   .modal-backdrop.open { display: flex; }
-  .modal-box { background: var(--white); max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-  .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); }
-  .modal-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; }
-  .modal-close { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--stone-light); padding: 4px; }
-  .modal-body { padding: 2rem; font-size: 0.88rem; color: var(--stone-mid); line-height: 1.9; }
-  .modal-body h3 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 400; color: var(--stone); margin: 1.75rem 0 0.5rem; }
+  .modal-box { background: var(--white); max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto; }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; }
+  .modal-close { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--ink-light); padding: 4px; }
+  .modal-body { padding: 2rem; font-size: 0.88rem; color: var(--ink-mid); line-height: 1.9; }
+  .modal-body h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--ink); margin: 1.5rem 0 0.5rem; }
   .modal-body h3:first-child { margin-top: 0; }
   .modal-body p { margin-bottom: 0.75rem; }
   .modal-body a { color: var(--rose); }
 
-  /* ── MOBILE ── */
-  .mobile-controls { display: none; align-items: center; gap: 10px; }
-  .mobile-menu-btn { display: flex; background: none; border: none; cursor: pointer; flex-direction: column; gap: 4px; padding: 4px; }
-  .mobile-menu-btn span { display: block; width: 20px; height: 1px; background: var(--stone); }
-
-  @media (max-width: 768px) {
-    .hero-title { font-size: 3rem; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
-    .times-inner { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    .services-cols { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .nav-center { display: none; }
+    .portal-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .nav-links { display: none; }
     .nav-right { display: none; }
     .mobile-controls { display: flex; }
+    footer { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -517,46 +217,45 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo" id="nav-logo">Ordination <em>Dr.</em></div>
-  <div class="nav-center" id="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#leistungen" id="nav-services">Leistungen</a>
     <a href="#team" id="nav-about">Über uns</a>
     <a href="#kontakt" id="nav-contact">Kontakt</a>
   </div>
   <div class="nav-right">
-    <div style="display:flex;gap:8px;align-items:center" id="lang-btns-desktop"></div>
+    <div class="lang-row" id="lang-row-desktop"></div>
     <a href="#" id="nav-portal-btn" class="nav-cta portal-link" target="_blank" rel="noopener noreferrer">Portal</a>
   </div>
   <div class="mobile-controls">
-    <div style="display:flex;gap:6px" id="lang-btns-mobile"></div>
+    <div class="lang-row" id="lang-row-mobile"></div>
     <button class="mobile-menu-btn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow"><span class="label" id="hero-eyebrow"></span></div>
-  <h1 class="hero-title" id="hero-title"></h1>
-  <p class="hero-sub" id="hero-sub"></p>
-  <div class="hero-actions">
-    <a href="#" id="hero-cta1" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer"></a>
-    <a href="#team" id="hero-cta2" class="btn-ghost"></a>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="label" id="hero-eyebrow"></span></div>
+    <h1 class="hero-title" id="hero-title"></h1>
+    <p class="hero-sub" id="hero-sub"></p>
+    <div class="hero-actions">
+      <a href="#" id="hero-cta1" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer"></a>
+      <a href="#team" id="hero-cta2" class="btn-outline"></a>
+    </div>
+    <div class="hero-stats" id="hero-stats"></div>
   </div>
-  <div class="hero-stats" id="hero-stats"></div>
 </section>
 
-<!-- ZEITEN -->
-<section class="times-section" id="zeiten">
-  <div class="times-inner" id="times-grid"></div>
-</section>
+<!-- ZEITEN STREIFEN -->
+<div class="times-strip" id="times-strip"></div>
 
 <!-- LEISTUNGEN -->
 <section class="section" id="leistungen">
   <div class="section-inner">
     <div class="section-header">
-      <span class="label" id="services-eyebrow"></span>
-      <h2 class="section-title" id="services-title"></h2>
+      <div><span class="label" id="services-eyebrow"></span><h2 class="section-title" id="services-title" style="margin-top:0.5rem"></h2></div>
     </div>
-    <div class="services-list" id="services-list"></div>
+    <div class="services-cols" id="services-cols"></div>
   </div>
 </section>
 
@@ -564,8 +263,7 @@
 <section class="team-section" id="team">
   <div class="team-inner">
     <div class="team-header">
-      <span class="label" id="team-eyebrow"></span>
-      <h2 class="section-title" id="team-title"></h2>
+      <div><span class="label" id="team-eyebrow"></span><h2 class="section-title" id="team-title" style="margin-top:0.5rem"></h2></div>
     </div>
     <div class="team-grid" id="team-grid"></div>
   </div>
@@ -574,11 +272,29 @@
 <!-- PORTAL -->
 <section class="portal-section" id="portal">
   <div class="portal-inner">
-    <span class="label" id="portal-eyebrow"></span>
-    <h2 class="portal-title" id="portal-title"></h2>
-    <p class="portal-sub" id="portal-sub"></p>
-    <div class="portal-features" id="portal-features"></div>
-    <a href="#" id="portal-cta" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer"></a>
+    <div>
+      <span class="label" id="portal-eyebrow"></span>
+      <div class="portal-divider"></div>
+      <h2 class="portal-title" id="portal-title"></h2>
+      <p class="portal-sub" id="portal-sub"></p>
+      <div class="portal-features" id="portal-features"></div>
+      <a href="#" id="portal-cta" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+    <div class="portal-aside">
+      <i class="ti ti-lock portal-aside-icon"></i>
+      <p class="portal-aside-text" id="portal-badge"></p>
+      <a href="#" id="portal-overlay-btn" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer" style="display:inline-flex"></a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div><span class="label">Bewertungen</span><h2 class="section-title" style="margin-top:0.5rem">Was unsere Patientinnen über uns sagen.</h2></div>
+    </div>
+    <div class="reviews-grid" id="reviews-grid"></div>
   </div>
 </section>
 
@@ -586,40 +302,15 @@
 <section class="contact-section" id="kontakt">
   <div class="contact-inner">
     <div class="contact-header">
-      <span class="label" id="contact-eyebrow"></span>
-      <h2 class="section-title" id="contact-title"></h2>
+      <div><span class="label" id="contact-eyebrow"></span><h2 class="section-title" id="contact-title" style="margin-top:0.5rem"></h2></div>
+      <a href="#" id="contact-cta" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer" style="display:inline-flex"></a>
     </div>
     <div class="contact-grid">
-      <div>
-        <div class="contact-block">
-          <span class="label" id="contact-addr-title"></span>
-          <p id="contact-addr"></p>
-        </div>
-        <div class="contact-block">
-          <span class="label" id="contact-tel-title"></span>
-          <p id="contact-tel"></p>
-        </div>
-        <div class="contact-block">
-          <span class="label" id="contact-times-title"></span>
-          <p id="contact-times"></p>
-        </div>
-        <a href="#" id="contact-cta" class="btn-primary portal-link" target="_blank" rel="noopener noreferrer" style="margin-top:1rem;display:inline-flex"></a>
-      </div>
-      <div class="contact-map">
-        <iframe id="maps-iframe" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin"></iframe>
-      </div>
+      <div class="contact-block"><span class="label" id="contact-addr-title"></span><p id="contact-addr"></p></div>
+      <div class="contact-block"><span class="label" id="contact-tel-title"></span><p id="contact-tel"></p></div>
+      <div class="contact-block"><span class="label" id="contact-times-title"></span><p id="contact-times"></p></div>
     </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews-section" id="reviews" style="display:none">
-  <div class="reviews-inner">
-    <div class="reviews-header">
-      <span class="label">Bewertungen</span>
-      <h2 class="section-title" style="margin-top:0.75rem">Was unsere Patientinnen<br>über uns sagen.</h2>
-    </div>
-    <div class="reviews-grid" id="reviews-grid"></div>
+    <div class="contact-map-full"><iframe id="maps-iframe" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin"></iframe></div>
   </div>
 </section>
 
@@ -636,32 +327,21 @@
 
 <!-- MODALS -->
 <div class="modal-backdrop" id="modal-impressum" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <div class="modal-header"><h2 id="modal-impressum-title">Impressum</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
-    <div class="modal-body" id="modal-impressum-body"></div>
-  </div>
+  <div class="modal-box"><div class="modal-header"><h2 id="modal-impressum-title">Impressum</h2><button class="modal-close" onclick="closeModal()">✕</button></div><div class="modal-body" id="modal-impressum-body"></div></div>
 </div>
 <div class="modal-backdrop" id="modal-datenschutz" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <div class="modal-header"><h2 id="modal-datenschutz-title">Datenschutz</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
-    <div class="modal-body" id="modal-datenschutz-body"></div>
-  </div>
+  <div class="modal-box"><div class="modal-header"><h2 id="modal-datenschutz-title">Datenschutz</h2><button class="modal-close" onclick="closeModal()">✕</button></div><div class="modal-body" id="modal-datenschutz-body"></div></div>
 </div>
 <div class="modal-backdrop" id="modal-partner" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box" style="max-width:720px">
-    <div class="modal-header"><h2 id="modal-partner-title">Partner</h2><button class="modal-close" onclick="closeModal()">✕</button></div>
-    <div class="modal-body"><p style="margin-bottom:1.5rem;color:var(--stone-mid)">Unser Partnernetzwerk.</p><div id="partner-list"></div></div>
-  </div>
+  <div class="modal-box" style="max-width:720px"><div class="modal-header"><h2 id="modal-partner-title">Partner</h2><button class="modal-close" onclick="closeModal()">✕</button></div><div class="modal-body"><div id="partner-list"></div></div></div>
 </div>
 
 <script>
-const _urlLang = new URLSearchParams(window.location.search).get('lang');
-const _urlColor = new URLSearchParams(window.location.search).get('color');
-const _urlFont = new URLSearchParams(window.location.search).get('font');
+const _p = new URLSearchParams(window.location.search);
+const _urlLang = _p.get('lang');
+const _urlColor = _p.get('color');
 let lang = (ORDI_CONFIG.languages||['de']).includes(_urlLang) ? _urlLang : (ORDI_CONFIG.defaultLang||'de');
-
 if (_urlColor) ORDI_CONFIG.colorPrimary = decodeURIComponent(_urlColor);
-if (_urlFont) ORDI_CONFIG.font = _urlFont;
 
 function t(obj) {
   if (!obj) return '';
@@ -680,13 +360,10 @@ function applyColors() {
 function buildLangBtns() {
   const langs = ORDI_CONFIG.languages || ['de'];
   if (langs.length < 2) return;
-  const btns = langs.map(l =>
-    '<button class="lang-toggle' + (l===lang?' active':'') + '" onclick="setLang(\'' + l + '\')">' + l.toUpperCase() + '</button>'
+  const html = langs.map(l =>
+    '<button class="lang-btn'+(l===lang?' active':'')+'" onclick="setLang(\''+l+'\')">'+l.toUpperCase()+'</button>'
   ).join('');
-  const d = document.getElementById('lang-btns-desktop');
-  const m = document.getElementById('lang-btns-mobile');
-  if (d) d.innerHTML = btns;
-  if (m) m.innerHTML = btns;
+  ['lang-row-desktop','lang-row-mobile'].forEach(id => { const el=document.getElementById(id); if(el) el.innerHTML=html; });
 }
 
 function renderPage() {
@@ -696,188 +373,171 @@ function renderPage() {
   document.documentElement.lang = lang;
 
   const portalUrl = C.portalUrl ? C.portalUrl + '?lang=' + lang : '#';
-  document.querySelectorAll('.portal-link').forEach(a => { a.href = portalUrl; if (!C.portalUrl) a.style.display='none'; });
+  document.querySelectorAll('.portal-link').forEach(a => { a.href=portalUrl; if(!C.portalUrl) a.style.display='none'; });
 
   // Nav
   document.getElementById('nav-logo').innerHTML = C.name.replace(/(\S+)\s+(.+)/, '$1 <em>$2</em>');
-  document.getElementById('nav-services').textContent = t(TX.nav?.services) || 'Leistungen';
-  document.getElementById('nav-about').textContent = t(TX.nav?.about) || 'Über uns';
-  document.getElementById('nav-contact').textContent = t(TX.nav?.contact) || 'Kontakt';
-  const portalBtn = document.getElementById('nav-portal-btn');
-  if (portalBtn) { portalBtn.textContent = t(TX.nav?.portal) || 'Portal'; if (!C.portalUrl) portalBtn.style.display='none'; }
+  document.getElementById('nav-services').textContent = t(TX.nav?.services)||'Leistungen';
+  document.getElementById('nav-about').textContent = t(TX.nav?.about)||'Über uns';
+  document.getElementById('nav-contact').textContent = t(TX.nav?.contact)||'Kontakt';
+  const nb = document.getElementById('nav-portal-btn');
+  if(nb) { nb.textContent=t(TX.nav?.portal)||'Portal'; if(!C.portalUrl) nb.style.display='none'; }
 
   // Hero
-  document.getElementById('hero-eyebrow').textContent = t(TX.hero?.eyebrow) || C.specialty;
-  document.getElementById('hero-title').innerHTML = t(TX.hero?.h1) || C.name;
-  document.getElementById('hero-sub').textContent = t(TX.hero?.sub) || '';
-  document.getElementById('hero-cta1').textContent = t(TX.hero?.cta1) || 'Termin anfragen';
-  document.getElementById('hero-cta2').textContent = t(TX.hero?.cta2) || 'Über uns';
-
-  // Stats
+  document.getElementById('hero-eyebrow').textContent = t(TX.hero?.eyebrow)||C.specialty;
+  document.getElementById('hero-title').innerHTML = t(TX.hero?.h1)||C.name;
+  document.getElementById('hero-sub').textContent = t(TX.hero?.sub)||'';
+  document.getElementById('hero-cta1').textContent = t(TX.hero?.cta1)||'Termin anfragen';
+  document.getElementById('hero-cta2').textContent = t(TX.hero?.cta2)||'Mehr erfahren';
   document.getElementById('hero-stats').innerHTML = (C.stats||[]).map(s =>
-    '<div class="stat"><div class="stat-num">' + s.number + '</div><div class="stat-lbl">' + t(s.label) + '</div></div>'
+    '<div><div class="stat-num">'+s.number+'</div><div class="stat-lbl">'+t(s.label)+'</div></div>'
   ).join('');
 
-  // Zeiten
-  document.getElementById('times-grid').innerHTML = C.doctors.map(d =>
-    '<div class="times-doc">' +
-    '<div class="times-doc-label"><span class="label">' + t(d.role) + '</span></div>' +
-    '<div class="times-doc-name">' + d.title + ' ' + d.name + '</div>' +
-    '<div class="times-doc-days">' + t(d.days) + '</div>' +
-    '<div class="times-doc-hours">' + t(d.hours) + '</div>' +
-    '<span class="times-doc-ins">' + t(d.insurance) + '</span>' +
+  // Zeiten Streifen
+  document.getElementById('times-strip').innerHTML = C.doctors.map(d =>
+    '<div class="times-strip-item">'+
+    '<div class="times-strip-role">'+t(d.role)+'</div>'+
+    '<div class="times-strip-name">'+d.title+' '+d.name+'</div>'+
+    '<div class="times-strip-days">'+t(d.days)+'</div>'+
+    '<div class="times-strip-hours">'+t(d.hours)+'</div>'+
+    '<div class="times-strip-ins">'+t(d.insurance)+'</div>'+
     '</div>'
-  ).join('');
+  ).join('') +
+  '<div class="times-strip-contact">'+
+  '<div style="font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.5rem">'+( t(TX.contact?.tel_title)||'Kontakt')+'</div>'+
+  '<div class="times-strip-contact-line">📞 <a href="tel:'+C.phone+'">'+C.phone+'</a></div>'+
+  '<div class="times-strip-contact-line">✉ <a href="mailto:'+C.email+'">'+C.email+'</a></div>'+
+  '</div>';
 
-  // Leistungen
-  document.getElementById('services-eyebrow').textContent = t(TX.services?.eyebrow) || 'Leistungen';
-  document.getElementById('services-title').innerHTML = t(TX.services?.h2) || 'Unser Angebot';
-  document.getElementById('services-list').innerHTML = (C.services||[]).map(s =>
-    '<div class="service-item">' +
-    '<i class="ti ' + s.icon + ' service-icon"></i>' +
-    '<div><div class="service-name">' + t(s.name) + '</div><div class="service-desc">' + t(s.desc) + '</div></div>' +
-    '</div>'
+  // Leistungen – zweispaltig
+  document.getElementById('services-eyebrow').textContent = t(TX.services?.eyebrow)||'Leistungen';
+  document.getElementById('services-title').innerHTML = t(TX.services?.h2)||'Unser Angebot';
+  const svcs = C.services||[];
+  const half = Math.ceil(svcs.length/2);
+  const col1 = svcs.slice(0,half);
+  const col2 = svcs.slice(half);
+  const renderCol = arr => arr.map(s =>
+    '<div class="service-row"><i class="ti '+s.icon+' service-icon"></i><div><div class="service-name">'+t(s.name)+'</div><div class="service-desc">'+t(s.desc)+'</div></div></div>'
   ).join('');
+  document.getElementById('services-cols').innerHTML = '<div>'+renderCol(col1)+'</div><div>'+renderCol(col2)+'</div>';
 
   // Team
-  document.getElementById('team-eyebrow').textContent = t(TX.team?.eyebrow) || 'Das Team';
-  document.getElementById('team-title').innerHTML = t(TX.team?.h2) || 'Ihre Ärzte';
+  document.getElementById('team-eyebrow').textContent = t(TX.team?.eyebrow)||'Das Team';
+  document.getElementById('team-title').innerHTML = t(TX.team?.h2)||'Ihre Ärzte';
   document.getElementById('team-grid').innerHTML = C.doctors.map(d =>
-    '<div class="team-card">' +
-    '<div class="team-photo"><div class="team-initials">' + d.initials + '</div><div class="team-bar" style="background:' + d.color + '"></div></div>' +
-    '<div class="team-role"><span class="label">' + t(d.role) + '</span></div>' +
-    '<div class="team-name">' + d.title + ' ' + d.name + '</div>' +
-    '<div class="team-bio">' + t(d.bio) + '</div>' +
-    '<div class="team-tags">' + (t(d.tags)||[]).map(tag => '<span class="team-tag">' + tag + '</span>').join('') + '</div>' +
+    '<div class="team-card">'+
+    '<div class="team-photo"><div class="team-initials">'+d.initials+'</div><div class="team-color-dot" style="background:'+d.color+'"></div></div>'+
+    '<div class="team-role"><span class="label">'+t(d.role)+'</span></div>'+
+    '<div class="team-name">'+d.title+' '+d.name+'</div>'+
+    '<div class="team-bio">'+t(d.bio)+'</div>'+
+    '<div class="team-tags">'+(t(d.tags)||[]).map(tag=>'<span class="team-tag">'+tag+'</span>').join('')+'</div>'+
     '</div>'
   ).join('');
 
   // Portal
-  if (C.portalUrl) {
-    document.getElementById('portal-eyebrow').textContent = t(TX.portal?.eyebrow) || 'Online Portal';
-    document.getElementById('portal-title').innerHTML = t(TX.portal?.h2) || 'Jederzeit online.';
-    document.getElementById('portal-sub').textContent = t(TX.portal?.sub) || '';
-    document.getElementById('portal-features').innerHTML = (t(TX.portal?.features)||[]).map(f =>
-      '<div class="portal-feature">' + f + '</div>'
+  if(C.portalUrl) {
+    document.getElementById('portal-eyebrow').textContent = t(TX.portal?.eyebrow)||'Online Portal';
+    document.getElementById('portal-title').innerHTML = t(TX.portal?.h2)||'Jetzt online.';
+    document.getElementById('portal-sub').textContent = t(TX.portal?.sub)||'';
+    document.getElementById('portal-features').innerHTML = (t(TX.portal?.features)||[]).map(f=>
+      '<div class="portal-feature"><i class="ti ti-check"></i>'+f+'</div>'
     ).join('');
-    document.getElementById('portal-cta').textContent = t(TX.portal?.cta) || 'Portal öffnen';
-  } else {
-    document.querySelector('.portal-section').style.display = 'none';
-  }
-
-  // Kontakt
-  document.getElementById('contact-eyebrow').textContent = t(TX.contact?.eyebrow) || 'Kontakt';
-  document.getElementById('contact-title').innerHTML = t(TX.contact?.h2) || 'Besuchen Sie uns';
-  document.getElementById('contact-addr-title').textContent = t(TX.contact?.addr_title) || 'Adresse';
-  document.getElementById('contact-addr').innerHTML = C.address + '<br>' + C.zip + ' ' + C.cityName + (C.mapsHint ? '<br><br>' + C.mapsHint : '');
-  document.getElementById('contact-tel-title').textContent = t(TX.contact?.tel_title) || 'Kontakt';
-  document.getElementById('contact-tel').innerHTML = '<a href="tel:' + C.phone + '">' + C.phone + '</a> (' + (t(TX.contact?.tel_hours)||'') + ')<br><a href="mailto:' + C.email + '">' + C.email + '</a>';
-  document.getElementById('contact-times-title').textContent = t(TX.contact?.times_title) || 'Zeiten';
-  document.getElementById('contact-times').innerHTML = C.doctors.map(d =>
-    '<strong>' + d.title + ' ' + d.name + '</strong><br>' + t(d.days) + ', ' + t(d.hours)
-  ).join('<br><br>');
-  document.getElementById('contact-cta').textContent = t(TX.contact?.cta) || 'Termin anfragen';
-  if (C.mapsEmbed) document.getElementById('maps-iframe').src = C.mapsEmbed;
-
-  // Footer
-  document.getElementById('footer-logo').textContent = C.name + ' · ' + C.specialty;
-  document.getElementById('footer-impressum').textContent = t(TX.footer?.impressum) || 'Impressum';
-  document.getElementById('footer-datenschutz').textContent = t(TX.footer?.datenschutz) || 'Datenschutz';
-  document.getElementById('footer-partner').textContent = t(TX.footer?.partner) || 'Partner';
-  document.getElementById('footer-lang').innerHTML = (ORDI_CONFIG.languages||['de']).map(l =>
-    '<a href="#" onclick="setLang(\'' + l + '\');return false;" class="' + (l===lang?'active':'') + '">' + l.toUpperCase() + '</a>'
-  ).join('');
-
-  // Impressum modal
-  const IMP = C.impressum || {};
-  document.getElementById('modal-impressum-title').textContent = t(TX.footer?.impressum) || 'Impressum';
-  document.getElementById('modal-impressum-body').innerHTML =
-    '<h3>Angaben gemäß § 5 ECG</h3><p><strong>' + (IMP.name||C.name) + '</strong><br>' + (IMP.title||C.specialty) + '<br>' + (IMP.address||C.address+', '+C.zip+' '+C.cityName) + '</p>' +
-    '<h3>Kontakt</h3><p>Tel: <a href="tel:' + C.phone + '">' + C.phone + '</a><br>E-Mail: <a href="mailto:' + C.email + '">' + C.email + '</a></p>' +
-    '<h3>Berufsrecht</h3><p>' + (IMP.chamber||'Ärztekammer für Wien') + '<br>' + (IMP.law||'Ärztegesetz 1998') + '</p>' +
-    '<p style="margin-top:1.5rem;font-size:0.78rem;color:var(--stone-light)">Stand: ' + new Date().getFullYear() + '</p>';
-  document.getElementById('modal-datenschutz-title').textContent = t(TX.footer?.datenschutz) || 'Datenschutz';
-  document.getElementById('modal-datenschutz-body').innerHTML =
-    '<h3>Verantwortliche</h3><p><strong>' + C.name + '</strong><br>' + C.address + ', ' + C.zip + ' ' + C.cityName + '<br><a href="mailto:' + C.email + '">' + C.email + '</a></p>' +
-    '<h3>Grundsatz</h3><p>Wir verarbeiten Ihre Daten auf Grundlage der DSGVO.</p>' +
-    '<h3>Google Maps</h3><p>Diese Website verwendet Google Maps. <a href="https://policies.google.com/privacy" target="_blank">Google Datenschutz</a>.</p>' +
-    '<h3>Ihre Rechte</h3><p>Wenden Sie sich an: <a href="mailto:' + C.email + '">' + C.email + '</a></p>' +
-    '<p style="margin-top:1.5rem;font-size:0.78rem;color:var(--stone-light)">Stand: ' + new Date().getFullYear() + '</p>';
-  document.getElementById('modal-partner-title').textContent = t(TX.footer?.partner) || 'Partner';
+    document.getElementById('portal-cta').textContent = t(TX.portal?.cta)||'Portal öffnen';
+    document.getElementById('portal-badge').textContent = t(TX.portal?.badge)||'';
+    document.getElementById('portal-overlay-btn').textContent = t(TX.portal?.cta)||'Zum Portal';
+  } else { const ps=document.querySelector('.portal-section'); if(ps) ps.style.display='none'; }
 
   // Reviews
-  const reviews = C.reviews || [];
-  const reviewsSection = document.getElementById('reviews');
-  const s = C.sections || {};
-  if (reviewsSection && s.reviews !== false && reviews.length > 0) {
-    reviewsSection.style.display = 'block';
+  const reviews = C.reviews||[];
+  const s = C.sections||{};
+  const rs = document.getElementById('reviews');
+  if(rs && s.reviews!==false && reviews.length>0) {
+    rs.style.display='block';
     document.getElementById('reviews-grid').innerHTML = reviews.map(r => {
-      const stars = '★'.repeat(r.stars) + '☆'.repeat(5-r.stars);
-      return '<div class="review-card"><div class="review-stars">' + stars + '</div>' +
-        '<div class="review-text">' + r.text + '</div>' +
-        '<div class="review-footer"><span class="review-name">' + r.name + '</span><span class="review-date">' + (r.date||'') + '</span></div>' +
-        '</div>';
+      const stars='★'.repeat(r.stars)+'☆'.repeat(5-r.stars);
+      return '<div class="review-card"><div class="review-stars">'+stars+'</div><div class="review-text">'+r.text+'</div><div class="review-footer"><span class="review-name">'+r.name+'</span><span class="review-date">'+(r.date||'')+'</span></div></div>';
     }).join('');
   }
 
-  // Lang buttons active state
-  document.querySelectorAll('.lang-toggle').forEach(b => {
-    b.classList.toggle('active', b.textContent.toLowerCase() === lang);
-  });
+  // Kontakt
+  document.getElementById('contact-eyebrow').textContent = t(TX.contact?.eyebrow)||'Kontakt';
+  document.getElementById('contact-title').innerHTML = t(TX.contact?.h2)||'Besuchen Sie uns';
+  document.getElementById('contact-addr-title').textContent = t(TX.contact?.addr_title)||'Adresse';
+  document.getElementById('contact-addr').innerHTML = C.address+'<br>'+C.zip+' '+C.cityName+(C.mapsHint?'<br><br>'+C.mapsHint:'');
+  document.getElementById('contact-tel-title').textContent = t(TX.contact?.tel_title)||'Telefon';
+  document.getElementById('contact-tel').innerHTML = '<a href="tel:'+C.phone+'">'+C.phone+'</a><br><a href="mailto:'+C.email+'">'+C.email+'</a>';
+  document.getElementById('contact-times-title').textContent = t(TX.contact?.times_title)||'Zeiten';
+  document.getElementById('contact-times').innerHTML = C.doctors.map(d=>
+    '<strong>'+d.title+' '+d.name+'</strong><br>'+t(d.days)+', '+t(d.hours)
+  ).join('<br><br>');
+  document.getElementById('contact-cta').textContent = t(TX.contact?.cta)||'Termin anfragen';
+  if(C.mapsEmbed) document.getElementById('maps-iframe').src=C.mapsEmbed;
+
+  // Footer
+  document.getElementById('footer-logo').innerHTML = '<em>'+C.name+'</em> · '+C.specialty;
+  document.getElementById('footer-impressum').textContent = t(TX.footer?.impressum)||'Impressum';
+  document.getElementById('footer-datenschutz').textContent = t(TX.footer?.datenschutz)||'Datenschutz';
+  document.getElementById('footer-partner').textContent = t(TX.footer?.partner)||'Partner';
+  document.getElementById('footer-lang').innerHTML = (C.languages||['de']).map(l=>
+    '<a href="#" onclick="setLang(\''+l+'\');return false;" class="'+(l===lang?'active':'')+'">'+l.toUpperCase()+'</a>'
+  ).join('');
+
+  // Impressum
+  const IMP=C.impressum||{};
+  document.getElementById('modal-impressum-title').textContent = t(TX.footer?.impressum)||'Impressum';
+  document.getElementById('modal-impressum-body').innerHTML =
+    '<h3>Angaben gemäß § 5 ECG</h3><p><strong>'+(IMP.name||C.name)+'</strong><br>'+(IMP.title||C.specialty)+'<br>'+(IMP.address||C.address+', '+C.zip+' '+C.cityName)+'</p>'+
+    '<h3>Kontakt</h3><p>Tel: <a href="tel:'+C.phone+'">'+C.phone+'</a><br>E-Mail: <a href="mailto:'+C.email+'">'+C.email+'</a></p>'+
+    '<h3>Berufsrecht</h3><p>'+(IMP.chamber||'Ärztekammer für Wien')+'</p>'+
+    '<p style="margin-top:1.5rem;font-size:0.78rem;color:var(--ink-light)">Stand: '+new Date().getFullYear()+'</p>';
+  document.getElementById('modal-datenschutz-title').textContent = t(TX.footer?.datenschutz)||'Datenschutz';
+  document.getElementById('modal-datenschutz-body').innerHTML =
+    '<h3>Verantwortliche</h3><p><strong>'+C.name+'</strong><br>'+C.address+', '+C.zip+' '+C.cityName+'<br><a href="mailto:'+C.email+'">'+C.email+'</a></p>'+
+    '<h3>Grundsatz</h3><p>Wir verarbeiten Ihre Daten auf Grundlage der DSGVO.</p>'+
+    '<h3>Google Maps</h3><p><a href="https://policies.google.com/privacy" target="_blank">Google Datenschutz</a>.</p>'+
+    '<p style="margin-top:1.5rem;font-size:0.78rem;color:var(--ink-light)">Stand: '+new Date().getFullYear()+'</p>';
+  document.getElementById('modal-partner-title').textContent = t(TX.footer?.partner)||'Partner';
+
+  // Lang active
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));
+  document.querySelectorAll('.footer-lang a').forEach(a=>a.classList.toggle('active',a.textContent.toLowerCase()===lang));
 
   // Sections
-  if (s.team === false) { const el = document.getElementById('team'); if (el) el.style.display='none'; }
-  if (s.stats === false) { const el = document.getElementById('hero-stats'); if (el) el.style.display='none'; }
+  if((s.stats===false)){const el=document.getElementById('hero-stats');if(el)el.style.display='none';}
+  if((s.team===false)){const el=document.getElementById('team');if(el)el.style.display='none';}
 }
 
-function setLang(l) {
-  lang = l;
-  renderPage();
-}
+function setLang(l){lang=l;renderPage();}
+function openModal(w){document.getElementById('modal-'+w).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.querySelectorAll('.modal-backdrop').forEach(m=>m.classList.remove('open'));document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-function openModal(which) {
-  document.getElementById('modal-'+which).classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open'));
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
-
-async function loadPartners() {
-  var container = document.getElementById('partner-list');
-  if (!container || container.dataset.loaded==='true') return;
-  container.innerHTML = '<p style="color:var(--stone-light)">Wird geladen…</p>';
-  try {
-    var resp = await fetch((ORDI_CONFIG.portalUrl||'').replace('frontend','backend').replace('-frontend','') + '/partners/public');
-    var data = await resp.json();
-    var partners = data.data || [];
-    container.innerHTML = partners.map(p =>
-      '<div style="background:var(--cream);border:0.5px solid var(--border);padding:1.2rem 1.4rem;margin-bottom:1rem">' +
-      (p.specialty?'<div class="label" style="margin-bottom:0.3rem">'+p.specialty+'</div>':'') +
-      '<div style="font-family:DM Serif Display,serif;font-size:1.1rem">'+p.name+'</div>' +
-      (p.notes?'<div style="font-size:0.8rem;color:var(--stone-mid);margin-top:0.2rem">'+p.notes+'</div>':'') +
-      (p.address?'<div style="font-size:0.8rem;color:var(--stone-light);margin-top:0.4rem">📍 '+p.address+'</div>':'') +
+async function loadPartners(){
+  var c=document.getElementById('partner-list');
+  if(!c||c.dataset.loaded==='true')return;
+  c.innerHTML='<p style="color:var(--ink-light)">Wird geladen…</p>';
+  try{
+    var r=await fetch((ORDI_CONFIG.portalUrl||'').replace('frontend','backend').replace('-frontend','')+'/partners/public');
+    var d=await r.json();
+    c.innerHTML=(d.data||[]).map(p=>
+      '<div style="background:var(--paper);border:0.5px solid var(--border);padding:1.2rem 1.4rem;margin-bottom:1rem">'+
+      (p.specialty?'<div class="label" style="margin-bottom:0.3rem">'+p.specialty+'</div>':'')+
+      '<div style="font-family:Playfair Display,serif;font-size:1.1rem">'+p.name+'</div>'+
+      (p.notes?'<div style="font-size:0.8rem;color:var(--ink-mid);margin-top:0.2rem">'+p.notes+'</div>':'')+
+      (p.address?'<div style="font-size:0.8rem;color:var(--ink-light);margin-top:0.4rem">📍 '+p.address+'</div>':'')+
       '</div>'
     ).join('');
-    container.dataset.loaded = 'true';
-  } catch(e) {
-    container.innerHTML = '<p style="color:var(--stone-light)">Nicht verfügbar.</p>';
-  }
+    c.dataset.loaded='true';
+  }catch(e){c.innerHTML='<p>Nicht verfügbar.</p>';}
 }
 
-function toggleMenu() {
-  const links = document.getElementById('nav-links');
-  if (links.style.display==='flex') links.style.display='none';
-  else links.style.cssText='display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:white;padding:1.5rem 6vw;gap:1.5rem;border-bottom:1px solid var(--border);z-index:99;box-shadow:0 4px 20px rgba(0,0,0,0.08)';
+function toggleMenu(){
+  const l=document.getElementById('nav-links');
+  if(l.style.display==='flex')l.style.display='none';
+  else l.style.cssText='display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:var(--white);padding:1.5rem 6vw;gap:1.5rem;border-bottom:1px solid var(--border);z-index:99;box-shadow:0 4px 20px rgba(28,25,23,0.08)';
 }
 
-window.onload = function() {
-  applyColors();
-  buildLangBtns();
-  renderPage();
-};
+window.onload=function(){applyColors();buildLangBtns();renderPage();};
 </script>
 </body>
 </html>
